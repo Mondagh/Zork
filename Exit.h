@@ -12,6 +12,7 @@ enum ExitEnum {
 	RIGHT,
 	LEFT,
 	OUTSIDE,
+	UP,
 	WRONG
 };
 class Exit :

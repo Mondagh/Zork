@@ -35,6 +35,7 @@ ExitEnum Exit::GetDireccion(const string & direction)
 		if (Compare(direction,"RIGHT")) return RIGHT;
 		else if (Compare(direction, "LEFT")) return LEFT;
 		else if (Compare(direction, "OUTSIDE")) return OUTSIDE;
+		else if (Compare(direction, "UP")) return UP;
 
 		return WRONG;
 }
@@ -53,6 +54,8 @@ string Exit::GetDireccion(ExitEnum direcionEnum)
 		return "Outside";
 		break;
 			
+	case UP:
+		return "Up";
 	default:
 		break;
 	}
@@ -73,8 +76,7 @@ bool Exit::Watch(const string args)
 	}
 	if (see)
 	{
-		cout << "\nYou see a " << name << "\n" << description;
-		cout << "\nDirection " << GetDireccion(direction);
+		cout << "\nYou see a " << name << ". " << description << ". Direction " << GetDireccion(direction);
 	}
 	return see;
 }

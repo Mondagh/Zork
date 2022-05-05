@@ -5,6 +5,7 @@
 #include <iostream>
 #include "General.h"
 
+
 using namespace std;
 
 Player::Player(string playerName, string playerDescription, Room* playerLocation)
@@ -36,6 +37,11 @@ bool Player::Move(const vector<string>& args)
 			cout << "\nIt's locked. Find a key.\n";
 			return false;
 
+		}
+		if (exit->direction == OUTSIDE)
+		{
+			cout << "\nYou found the exit, you are free!";
+			return true;
 		}
 		actualLocation = exit->destination;
 		cout << "\nYou move to " << GetActualLocation()->description << "\n";
@@ -137,7 +143,6 @@ void Player::Drop(const vector<string>& args)
 					itemDropped = item;
 				}
 			}
-
 		}
 		if (drop)
 		{

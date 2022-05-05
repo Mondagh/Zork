@@ -42,11 +42,11 @@ bool Item::Watch(string args)
 		}
 		if (see)
 		{
-			cout << "\nYou see a " << name << "\n" << description;
+			cout << "\nYou see a " << name << ". " << description;
 		}
-		return see;
+		
 	}
-	
+	return see;
 }
 
 bool Item::Open()

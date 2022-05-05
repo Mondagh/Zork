@@ -47,7 +47,7 @@ void Room::Watch(const string args)
 	
 	if (args.empty())
 	{
-		cout << "\n" << name << "\n" << description;
+		cout << "\nYou are in a " << name << ". " << description;
 	}
 	bool see = false;
 

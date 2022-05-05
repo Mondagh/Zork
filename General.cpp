@@ -23,32 +23,7 @@ using namespace std;
 	 } while (0 != *str++);
  }
 
- char ToUpper(string & argument)
- {
-	// cout << argument;
-	 char upper='a';
-
-	// upper += ::toupper(*cstr);
-	 const char* str = argument.c_str();
-
-	 do
-	 {
-		 const char *begin = str;
-
-		 while (*str != ' ' && *str) {
-			cout << ::toupper(*str) + "\n";
-			 str++;
-		 }
-			 
-
-		 
-	 } while (0 != *str++);
-	 cout << upper + "\n";
-	
-	 
-
-	return upper;
- }
+ 
 
  bool Compare(const string& a, const string& b)
  {

@@ -16,6 +16,7 @@ using namespace std;
 
 World::World()
 {
+	playing = true;
 	LoadWorld();
 }
 
@@ -24,69 +25,115 @@ World::~World()
 {
 }
 
+/*
 
-
+	This checks the action of the player
+*/
 bool World::CheckAction(vector<string>& actions)
 {
-	bool done = true;
+	bool done = false;
 	if (actions.size() > 0 && !actions[0].empty() && !actions[0]._Equal("\n"))
 	{
-	 
-
 		if (Compare(actions[0], "move")){
-			cout << "\nEstamos en move\n";
-			player->Move(actions);
+			done =player->Move(actions);
+			if (done)
+			{
+				playing = false;
+			}
 		}
 		else if (Compare(actions[0], "look")) {
-			cout << "\nEstamos en look\n";
 			player->Watch(actions);
 		}
 		else if (Compare(actions[0], "take")) {
-			cout << "\nEstamos en take\n";
 			player->Take(actions);
 		}
 		else if (Compare(actions[0], "open")) {
-			cout << "\nEstamos en open\n";
 			player->Open(actions);
 		}
 		else if (Compare(actions[0], "drop")) {
-			cout << "\nEstamos en drop\n";
 			player->Drop(actions);
 		}
 		else if (Compare(actions[0], "unlock")) {
-			cout << "\nEstamos en unlock\n";
 			player->UnLock(actions);
 		}
 		else {
 			return false;
 		}
-
-
 	}
 	
-	return done;
+	return true;
 }
 
 void World::LoadWorld()
 {
 	//Create all entitys
-	Room* bedRoom = new Room("BedRoom", "Small bedroom");
-	entities.push_back(bedRoom);
-	Item* key = new Item("Key", "Description of Key 1", false, bedRoom, true, false,true);
-	entities.push_back(key);
-	Item* chest = new Item("Chest", "Description of chest 1", true, bedRoom, false, false,false);
-	entities.push_back(chest);
-	chest->entitys.push_back(key);
 
-	Room* room2 = new Room("Room2", "Description of room 2");
-	entities.push_back(room2);
+	//Rooms
+
+	Room* cell = new Room("Cell", "It's a small cell with a bad smell");
+	entities.push_back(cell);
+
+	Room* guardRoom = new Room("Guards Room", "It's room when guards play and eat.");
+	entities.push_back(guardRoom);
+
+
+	Room* stairs = new Room("Stairs", "Whood stairs");
+	entities.push_back(stairs);
+
+	Room* entrance = new Room("Entrance", "Seems the entrance of this prision");
+	entities.push_back(entrance);
+
+	//Items
+
+	//cell items
 	
+	Item* bone = new Item("Bone", "Small elongated bone", true, cell, true, false, true);
+	entities.push_back(bone);
+	Item* skull = new Item("Skull", "Maybe another prisoner", true, cell, true, false, true);
+	entities.push_back(skull);
 
-	Exit* exit = new Exit("Door", "Description of exit1",RIGHT, bedRoom, room2,true,key);
-	entities.push_back(exit);
-	Exit* exit2 = new Exit("Door", "Description of exit1", LEFT, room2, bedRoom,false, NULL);
-	entities.push_back(exit2);
-	player = new Player("Paco", "El aventurero Paco", bedRoom);
+	//guardRoom items
+	Item* table = new Item("Table", "A whood table", true, guardRoom, true, false, false);
+	entities.push_back(table);
+	Item* chair = new Item("Chair", "A slightly broken chair", true, guardRoom, true, false, true);
+	entities.push_back(chair);
+	Item* key = new Item("Key", "A little metalic key", true, guardRoom, true, false, true);
+	entities.push_back(key);
+	
+	//entrance items	
+	Item* chest = new Item("Chest", "Small chest", true, entrance, false, false, true);
+	entities.push_back(chest);
+	Item* diamont = new Item("Diamont", "A precios diamond as big as your hand", false, entrance, true, false, true);
+	entities.push_back(diamont);
+	chest->entitys.push_back(diamont);
+
+	//Exits
+
+	Exit* cellDoorR = new Exit("Door", "Simple cell door", RIGHT, cell, guardRoom, true, bone);
+	entities.push_back(cellDoorR);
+	Exit* cellDoorL = new Exit("Door", "Simple cell door", LEFT, guardRoom, cell, false, NULL);
+	entities.push_back(cellDoorL);
+
+	Exit* guardRoomDoorR = new Exit("Door", "Whood door", RIGHT, guardRoom, stairs, false, NULL);
+	entities.push_back(guardRoomDoorR);
+	Exit* guardRoomDoorL = new Exit("Door", "Whood door", LEFT, stairs, guardRoom, false, NULL);
+	entities.push_back(guardRoomDoorL);
+
+	Exit* stairsR = new Exit("Door", "Whood door", RIGHT, stairs, entrance, false, NULL);
+	entities.push_back(stairsR);
+	Exit* stairsL = new Exit("Door", "Whood door", LEFT, entrance, stairs, false, NULL);
+	entities.push_back(stairsL);
+
+	Exit* entranceExit = new Exit("Door", "Simple cell door", OUTSIDE, entrance, cell, true, key);
+	entities.push_back(entranceExit);
+
+	
+	player = new Player("Player", "A player", cell);
 	entities.push_back(player);
+}
+
+bool World::CheckPlaying()
+{
+	return playing;
 }
 

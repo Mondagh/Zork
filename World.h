@@ -1,7 +1,4 @@
 #pragma once
-//#ifndef __World__
-//#define __World__
-
 #include <string>
 #include <list>
 #include <vector>
@@ -22,12 +19,15 @@ public:
 
 	bool CheckAction(vector<string>& actions);
 	void LoadWorld();
+	bool CheckPlaying();
 
 private:
 
 	list<Entity*> entities;
 	Player* player;
 	char* verb;
+public:
+
+	bool playing;
 };
 
-//#endif //__World__

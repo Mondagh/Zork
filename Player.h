@@ -16,6 +16,6 @@ public:
 
 public:
 	int itemsTaked;
-	const int maxItemsTaked = 1;
+	const int maxItemsTaked = 2;
 };
 
