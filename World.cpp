@@ -34,8 +34,8 @@ bool World::CheckAction(vector<string>& actions)
 	bool done = false;
 	if (actions.size() > 0 && !actions[0].empty() && !actions[0]._Equal("\n"))
 	{
-		if (Compare(actions[0], "move")){
-			done =player->Move(actions);
+		if (Compare(actions[0], "move")) {
+			done = player->Move(actions);
 			if (done)
 			{
 				playing = false;
@@ -60,7 +60,7 @@ bool World::CheckAction(vector<string>& actions)
 			return false;
 		}
 	}
-	
+
 	return true;
 }
 
@@ -86,7 +86,7 @@ void World::LoadWorld()
 	//Items
 
 	//cell items
-	
+
 	Item* bone = new Item("Bone", "Small elongated bone", true, cell, true, false, true);
 	entities.push_back(bone);
 	Item* skull = new Item("Skull", "Maybe another prisoner", true, cell, true, false, true);
@@ -99,7 +99,7 @@ void World::LoadWorld()
 	entities.push_back(chair);
 	Item* key = new Item("Key", "A little metalic key", true, guardRoom, true, false, true);
 	entities.push_back(key);
-	
+
 	//entrance items	
 	Item* chest = new Item("Chest", "Small chest", true, entrance, false, false, true);
 	entities.push_back(chest);
@@ -127,7 +127,7 @@ void World::LoadWorld()
 	Exit* entranceExit = new Exit("Door", "Simple cell door", OUTSIDE, entrance, cell, true, key);
 	entities.push_back(entranceExit);
 
-	
+
 	player = new Player("Player", "A player", cell);
 	entities.push_back(player);
 }
@@ -136,4 +136,3 @@ bool World::CheckPlaying()
 {
 	return playing;
 }
-
