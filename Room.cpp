@@ -44,7 +44,7 @@ Exit * Room::FindExit(const string& direction) const
 
 void Room::Watch(const string args)
 {
-	
+
 	if (args.empty())
 	{
 		cout << "\nYou are in a " << name << ". " << description;
@@ -76,9 +76,8 @@ void Room::Watch(const string args)
 			{
 				see = exit->Watch(args);
 			}
-			
+
 		}
 	}
 }
-
 

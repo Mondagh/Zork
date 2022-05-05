@@ -26,7 +26,7 @@ bool Player::Move(const vector<string>& args)
 	if (args.size() > 1)
 	{
 		Exit* exit = GetActualLocation()->FindExit(args[1]);
-			
+
 		if (exit == NULL)
 		{
 			cout << "\nYou can't move to direcion " << args[1] << "\n";
@@ -45,7 +45,7 @@ bool Player::Move(const vector<string>& args)
 		}
 		actualLocation = exit->destination;
 		cout << "\nYou move to " << GetActualLocation()->description << "\n";
-		
+
 	}
 	return false;
 }
@@ -66,9 +66,9 @@ void Player::Open(const vector<string>& args) const
 	if (args.size() > 1) {
 		for (list<Entity*>::const_iterator cit = actualLocation->entitys.begin(); cit != actualLocation->entitys.cend(); ++cit)
 		{
-			if ((*cit) ->type == ITEM )
+			if ((*cit)->type == ITEM)
 			{
-				Item* item = (Item*) *cit;
+				Item* item = (Item*)*cit;
 				if (Compare(item->name, args[1]))
 				{
 					opened = item->Open();
@@ -80,7 +80,7 @@ void Player::Open(const vector<string>& args) const
 		{
 			cout << "\nYou can't open " << args[1];
 		}
-		
+
 	}
 	else {
 		cout << "\nYou need to especificate what to open";
@@ -92,7 +92,7 @@ void Player::Take(const vector<string>& args)
 	bool taken = false;
 	Item* itemTaked = NULL;
 	if (args.size() > 1) {
-		if (itemsTaked  == maxItemsTaked)
+		if (itemsTaked == maxItemsTaked)
 		{
 			cout << "\nYou only can take " << maxItemsTaked << " at the same time";
 		}
@@ -171,7 +171,7 @@ void Player::UnLock(const vector<string>& args)
 			if ((*cit)->type == ITEM)
 			{
 				key = (Item*)*cit;
-				
+
 			}
 
 		}

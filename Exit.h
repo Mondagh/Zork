@@ -20,7 +20,7 @@ class Exit :
 {
 public:
 	Exit();
-	Exit(string exitName, string exitDescription, ExitEnum exitDirection, Room* exitSource, Room* exitDestination,bool isLocked, Item* exitKey);
+	Exit(string exitName, string exitDescription, ExitEnum exitDirection, Room* exitSource, Room* exitDestination, bool isLocked, Item* exitKey);
 	~Exit();
 	ExitEnum GetDireccion(const string& direction);
 	string GetDireccion(ExitEnum direcionEnum);
@@ -33,5 +33,4 @@ public:
 	bool locked;
 	Item* key;
 };
-
 

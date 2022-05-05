@@ -11,7 +11,7 @@ class Item :
 public:
 	Item();
 	~Item();
-	Item(string itemName, string itemDescription,bool isVisible, Room* starterLocation, bool isOpened, bool isTaken, bool posibleTaken);
+	Item(string itemName, string itemDescription, bool isVisible, Room* starterLocation, bool isOpened, bool isTaken, bool posibleTaken);
 	bool Watch(const string args);
 	bool Open();
 	bool Take();
@@ -23,7 +23,7 @@ public:
 	bool taked;
 	bool open;
 	bool taken;
-	
-	
+
+
 };
 

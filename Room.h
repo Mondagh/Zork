@@ -6,7 +6,7 @@
 #include "Entity.h"
 #include "Exit.h"
 
-class Exit; 
+class Exit;
 
 class Room :
 	public Entity

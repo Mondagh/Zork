@@ -8,7 +8,7 @@ Entity::Entity() {
 }
 
 Entity::Entity(string entityName, string entityDescription)
-	
+
 {
 	name = entityName;
 	description = entityDescription;
@@ -26,4 +26,5 @@ bool Entity::Update()
 void Entity::Watch(const string args)
 {
 }
+
 

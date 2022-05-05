@@ -1,6 +1,5 @@
 #pragma once
 
-#include "pch.h"
 #include <string>
 #include <list>
 
@@ -30,5 +29,5 @@ public:
 	list<Entity*> entitys;
 };
 
-	
+
 

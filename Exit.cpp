@@ -32,12 +32,12 @@ Exit::~Exit()
 
 ExitEnum Exit::GetDireccion(const string & direction)
 {
-		if (Compare(direction,"RIGHT")) return RIGHT;
-		else if (Compare(direction, "LEFT")) return LEFT;
-		else if (Compare(direction, "OUTSIDE")) return OUTSIDE;
-		else if (Compare(direction, "UP")) return UP;
+	if (Compare(direction, "RIGHT")) return RIGHT;
+	else if (Compare(direction, "LEFT")) return LEFT;
+	else if (Compare(direction, "OUTSIDE")) return OUTSIDE;
+	else if (Compare(direction, "UP")) return UP;
 
-		return WRONG;
+	return WRONG;
 }
 
 string Exit::GetDireccion(ExitEnum direcionEnum)
@@ -53,7 +53,7 @@ string Exit::GetDireccion(ExitEnum direcionEnum)
 	case OUTSIDE:
 		return "Outside";
 		break;
-			
+
 	case UP:
 		return "Up";
 	default:
@@ -65,12 +65,12 @@ string Exit::GetDireccion(ExitEnum direcionEnum)
 bool Exit::Watch(const string args)
 {
 	bool see = true;
-	
+
 	if (!args.empty())
 	{
 		if (!Compare(name, args))
 		{
-			cout << "\nYou can't see a " <<  args;
+			cout << "\nYou can't see a " << args;
 			see = false;
 		}
 	}
@@ -103,5 +103,3 @@ bool Exit::UnLock(Item* unLockItem)
 	}
 	return unLock;
 }
-
-

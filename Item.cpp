@@ -15,7 +15,7 @@ Item::~Item()
 {
 }
 
-Item::Item(string itemName, string itemDescription, bool isVisible, Room* starterLocation, bool isOpened, bool isTaken ,bool posibleTaken)
+Item::Item(string itemName, string itemDescription, bool isVisible, Room* starterLocation, bool isOpened, bool isTaken, bool posibleTaken)
 {
 	name = itemName;
 	description = itemDescription;
@@ -44,7 +44,7 @@ bool Item::Watch(string args)
 		{
 			cout << "\nYou see a " << name << ". " << description;
 		}
-		
+
 	}
 	return see;
 }
